@@ -1,0 +1,1 @@
+webpackJsonp([0],[function(n,t,e){"use strict";var o=e(1),u=function(n){return n&&n.__esModule?n:{default:n}}(o);(0,u.default)("GET","http://www.bbc.co.uk/news"),(0,u.default)("GET","http://nope")},function(n,t,e){"use strict";n.exports=function(n,t){var e=new XMLHttpRequest;e.open(n,t),e.onload=function(n){console.dir(n)},e.onerror=function(n){console.dir(n)},e.send()}}],[0]);

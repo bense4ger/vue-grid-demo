@@ -43,6 +43,7 @@ const compileSass = {
 const externals = {
   vue: 'Vue',
   vuex: 'Vuex',
+  jquery: 'jQuery',
 };
 
 /*
