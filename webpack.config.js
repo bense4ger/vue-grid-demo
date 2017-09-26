@@ -19,7 +19,7 @@ const extractSass = new ExtractText({
 const transpile = {
   test: /\.js$/,
   exclude: [/node_modules/],
-  use: [{ loader: 'babel-loader ' }],
+  use: [{ loader: 'babel-loader' }],
 };
 
 const compileVue = {
