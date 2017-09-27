@@ -32,5 +32,8 @@
     "webpack-dev-server": "2.8.2"
   },
   "author": "Ben Seager",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "es6-promise": "^4.1.1"
+  }
 }

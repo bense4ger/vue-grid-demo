@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies,no-param-reassign,import/no-unresolved,import/extensions,max-len */
 import $ from 'jquery';
 import Vuex from 'vuex';
+import {service} from './service';
 
 const store = new Vuex.Store({
   state: {
@@ -27,14 +28,7 @@ const init = (data) => {
 };
 
 $(() => {
-  $.ajax({
-    method: 'GET',
-    url: 'http://localhost:8081?page=1',
-    success: (data) => {
-      init(data);
-    },
-    error: () => {
-      console.log('Error starting app');
-    },
-  });
+  service.getPageData(1)
+    .then((data) => init(data))
+    .catch((err) => console.dir(err));
 });
