@@ -14,4 +14,4 @@ const getPageData = (page) => {
     });
 }
 
-export const service = { getPageData, }
+export default { getPageData, }

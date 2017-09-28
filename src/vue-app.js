@@ -2,38 +2,17 @@
 import $ from 'jquery';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {service} from './service';
-
+import service from './service';
+import store from './store';
 import App from './components/app.vue';
 
-const store = new Vuex.Store({
-  state: {
-    currentPage: 0,
-    pageData: {},
-  },
-  mutations: {
-    incPage(state) {
-      state.currentPage += 1;
-    },
-    decPage(state) {
-      state.currentPage += 1;
-    },
-    addData(state, d) {
-      state.pageData[d.page] = d.data;
-    },
-  },
-  getters : {
-    currentPage: state => {
-      return state.currentPage;
-    }
-  },
-});
 
-const init = (data) => {
+const init = (response) => {
   console.log('Starting app');
   store.commit('incPage');
-  store.commit('addData', { page: 1, data });
-
+  store.commit('addData', { page: 1, data: response.data });
+  store.commit('totalPages', response.pages);
+  
   new Vue({
     el: '#app',
     render: h => h(App),
