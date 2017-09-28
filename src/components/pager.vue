@@ -24,12 +24,12 @@ export default {
         const before = (mod) => {
             const bf = n + mod;
             return bf > 0 ? bf : undefined;
-        }
+        };
 
         const after = (mod) => {
             const af = n + mod;
             return af <=this.totalPages ? af : undefined
-        }
+        };
         
         const bfs = [ before(-2), before(-1) ].filter(x => x !== undefined);
         const afs = [ after(1), after(2) ].filter(x => x !== undefined);

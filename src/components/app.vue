@@ -4,6 +4,7 @@
           <h2>Some Things</h2>
       </div>
       <div id="inner">
+          <grid></grid>
           <pager></pager>
       </div>
   </div>
@@ -12,11 +13,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import Pager from './pager.vue';
+import Grid from './grid.vue';
 
 export default {
   name: 'app',
   components: {
-      pager: Pager
+    pager: Pager,
+    grid: Grid
   }
 }
 </script>

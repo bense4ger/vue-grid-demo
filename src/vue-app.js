@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies,no-param-reassign,import/no-unresolved,import/extensions,max-len */
 import $ from 'jquery';
 import Vue from 'vue';
-import Vuex from 'vuex';
 import service from './service';
 import store from './store';
 import App from './components/app.vue';
@@ -12,7 +11,8 @@ const init = (response) => {
   store.commit('incPage');
   store.commit('addData', { page: 1, data: response.data });
   store.commit('totalPages', response.pages);
-  
+
+  // eslint-disable-next-line no-new
   new Vue({
     el: '#app',
     render: h => h(App),
@@ -22,6 +22,6 @@ const init = (response) => {
 
 $(() => {
   service.getPageData(1)
-    .then((data) => init(data))
-    .catch((err) => console.dir(err));
+    .then(data => init(data))
+    .catch(err => console.dir(err));
 });
