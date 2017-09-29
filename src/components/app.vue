@@ -25,7 +25,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+  body {
+    font: 1em sans-serif;
+  }
 </style>
 
 

@@ -1,5 +1,5 @@
 <template>
-  <div :class="page" @click="fetch">{{text}}</div>
+  <button class="page" @click="fetch">{{text}}</button>
 </template>
 
 <script>
@@ -50,7 +50,9 @@
 </script>
 
 <style lang="scss">
-
+  .page {
+    cursor: pointer;
+  }
 </style>
 
 

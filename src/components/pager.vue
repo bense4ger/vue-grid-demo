@@ -15,8 +15,8 @@ export default {
   name: 'Pager',
   data() {
       return {
-          next: { mod: '+', text: "Next" },
-          prev: { mod: '-', text: "Previous" }
+          next: { mod: '+', text: "Next Page" },
+          prev: { mod: '-', text: "Previous Page" }
       }
   },
   computed: {
@@ -31,8 +31,23 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
+    div#pages {
+        padding-top: 50px;
+        
+        ul {
+            list-style: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
 
+            li {
+                display: inline-block;
+                margin-right: 50px;
+            }
+        }
+    }
+    
 </style>
 
 

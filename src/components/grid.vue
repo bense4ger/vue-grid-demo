@@ -29,4 +29,15 @@
   }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  table {
+    border-collapse: collapse;
+    width: 75%;
+    thead {
+      border-bottom: solid 1px black;
+      th {
+        text-align: left;
+      }
+    }
+  }
+</style>
