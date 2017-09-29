@@ -8,7 +8,7 @@ import App from './components/app.vue';
 
 const init = (response) => {
   console.log('Starting app');
-  store.commit('incPage');
+  store.commit('incrementPage', 1);
   store.commit('addData', { page: 1, data: response.data });
   store.commit('totalPages', response.pages);
 

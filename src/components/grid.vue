@@ -5,7 +5,7 @@
         <th>Modified</th>
         <th>Count</th>
         </thead>
-        <template v-for="datum in pageData(currentPage)">
+        <template v-for="datum in pageData(currentPage)" >
             <tr>
                 <td>{{datum.name}}</td>
                 <td>{{datum.modified}}</td>

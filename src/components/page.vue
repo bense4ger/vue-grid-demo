@@ -1,5 +1,5 @@
 <template>
-  <div :class="cls" :click="fetch">{{number}}</div>
+  <div :class="page" @click="fetch">{{text}}</div>
 </template>
 
 <script>
@@ -8,7 +8,7 @@
 
   export default {
     name: 'Page',
-    props: ['number'],
+    props: ['mod', 'text'],
     data() {
       return {
         canFetch: false
@@ -16,38 +16,34 @@
     },
     computed: {
       ...mapGetters([
-        'currentPage'
-      ]),
-      cls() {
-        const base = 'page';
-        if (this.currentPage !== this.number) {
-          this.canFetch = true;
-          return `${base} can-fetch`
-        }
-
-        return base;
-      }
+        'currentPage',
+        'pageData'
+      ])
     },
     methods: {
       ...mapMutations([
-        'incPage',
-        'decPage',
-        'addDate'
+        'incrementPage',
+        'addData'
       ]),
       fetch(){
-        if (!this.canFetch) return;
+        
+        const inc = this.mod === '-'
+          ? -1
+          : 1;
 
-        const toFetch = parseInt(this.number) !== 'NaN'
-          ? this.number
-          : this.number === '<<'
-            ? this.number - 3
-            : this.number + 3;
-
-        service.getPageData(toFetch)
-          .then((data) => {
-
-          })
-          .catch((err) => console.dir(err));
+        const toFetch = this.currentPage + inc;
+        
+        if (this.pageData(toFetch) === undefined) {
+          service.getPageData(toFetch)
+            .then((response) => {
+              this.addData({ page: toFetch, data: response.data});
+              this.incrementPage(inc);
+            })
+            .catch((err) => console.dir(err));
+        }
+        else {
+          this.incrementPage(inc);
+        }        
       }
     }
   }

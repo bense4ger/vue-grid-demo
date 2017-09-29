@@ -9,12 +9,9 @@ const store = new Vuex.Store({
     totalPages: -1,
     pageData: {},
   },
-  mutations: {
-    incPage(state) {
-      state.currentPage += 1;
-    },
-    decPage(state) {
-      state.currentPage += 1;
+  mutations: {    
+    incrementPage(state, payload) {
+      state.currentPage += payload;
     },
     addData(state, d) {
       state.pageData[d.page] = d.data;

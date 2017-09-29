@@ -1,9 +1,8 @@
 <template>
   <div id="pages">
       <ul>
-          <li v-for="slice in pagesSlice" :key="slice">
-              <page :number="slice"></page>
-          </li>
+          <li v-if="currentPage > 1"><page :mod="prev.mod" :text="prev.text"></page></li>
+          <li v-if="currentPage < totalPages"><page :mod="next.mod" :text="next.text"></page></li>
       </ul>
   </div>
 </template>
@@ -14,36 +13,17 @@ import Page from './page.vue';
 
 export default {
   name: 'Pager',
+  data() {
+      return {
+          next: { mod: '+', text: "Next" },
+          prev: { mod: '-', text: "Previous" }
+      }
+  },
   computed: {
       ...mapGetters([
           'totalPages',
           'currentPage'
-      ]),
-      pagesSlice(){
-        const n = this.currentPage;
-        const before = (mod) => {
-            const bf = n + mod;
-            return bf > 0 ? bf : undefined;
-        };
-
-        const after = (mod) => {
-            const af = n + mod;
-            return af <=this.totalPages ? af : undefined
-        };
-        
-        const bfs = [ before(-2), before(-1) ].filter(x => x !== undefined);
-        const afs = [ after(1), after(2) ].filter(x => x !== undefined);
-
-        const slice = [
-            bfs.length === 2 ? "<<" : undefined,
-            bfs,
-            n,
-            afs,
-            afs.length === 2 ? ">>" : undefined
-        ];
-
-        return [].concat.apply([], slice).filter(x => x !== undefined);
-      }
+      ])
   },
   components: {
       page: Page
